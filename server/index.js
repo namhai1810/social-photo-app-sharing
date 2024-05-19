@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import register from "./controllers/register.js"; 
 
 // Import routes
 
@@ -34,6 +35,10 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
+
+// Route this file
+app.post("/upload", upload.single("picture"), register);
+  
 
 // Mongoose setup
 const PORT = process.env.PORT || 8001;
