@@ -1,10 +1,11 @@
 import User from "../models/User.js";
+import Post from "../models/Post.js";
 
 /* READ */
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.findById(id);
+    const user = await User.findById(id).select("-password");
     res.status(200).json(user);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -59,5 +60,37 @@ export const addRemoveFriend = async (req, res) => {
     res.status(200).json(formattedFriends);
   } catch (err) {
     res.status(404).json({ message: err.message });
+  }
+};
+
+export const editUser = async (req, res) => {
+  console.log(req.body);
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const user = await User.findByIdAndUpdate(id, updateData, {
+      new: true,
+      runValidators: true,
+    }).select("-password");
+    const postUpdateData = {};
+    if (updateData.firstName) postUpdateData.firstName = updateData.firstName;
+    if (updateData.lastName) postUpdateData.lastName = updateData.lastName;
+    if (updateData.userPicturePath) postUpdateData.userPicturePath = updateData.userPicturePath;
+
+    await Post.updateMany(
+      { userId: id },
+      { $set: postUpdateData }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Respond with the updated user
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: err.message });
   }
 };
