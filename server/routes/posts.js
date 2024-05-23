@@ -1,5 +1,12 @@
 import express from "express";
-import { getFeedPosts, getUserPosts, likePost } from "../controllers/posts.js";
+import {
+  getFeedPosts,
+  getUserPosts,
+  likePost,
+  addComment,
+  getComments,
+  deleteComment,
+} from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -10,5 +17,9 @@ router.get("/:userId/posts", verifyToken, getUserPosts);
 
 /* UPDATE */
 router.patch("/:id/like", verifyToken, likePost);
+
+router.post("/:postId/comments", addComment);
+router.get("/:postId/comments", getComments);
+router.delete("/:postId/comments/:commentId", deleteComment);
 
 export default router;
