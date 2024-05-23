@@ -120,6 +120,22 @@ const EditProfilePage = () => {
               fullWidth
               margin="normal"
             />
+            <TextField
+              label="Linkedin"
+              name="linkedIn"
+              value={user.linkedIn}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Twitter"
+              name="twitter"
+              value={user.twitter}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
             {/* Add more fields as necessary */}
             <Box display="flex" justifyContent="flex-end" mt="2rem">
               <Button type="submit" variant="contained" color="primary">
