@@ -75,7 +75,7 @@ const EditProfilePage = () => {
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <MyPostWidget picturePath={user.picturePath} />
+        
           <form onSubmit={handleSubmit}>
             <TextField
               label="First Name"
