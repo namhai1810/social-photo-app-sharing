@@ -36,7 +36,7 @@ function App() {
               element={isAuth ? <EditProfilePage /> : <Navigate to="/" />}
             />
             <Route
-              path="/profile/friend/:userId"
+              path="/profile/friend/:friendId"
               element={isAuth ? <FriendPage /> : <Navigate to="/" />}
             />
           </Routes>

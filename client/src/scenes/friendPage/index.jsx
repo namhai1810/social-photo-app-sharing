@@ -2,14 +2,14 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import Navbar from "scenes/navbar";
 import UserWidget from "scenes/widgets/UserWidget";
-import MyPostWidget from "scenes/widgets/MyPostWidget";
+import FriendPostWidget from "scenes/widgets/FriendPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
-
+import { useParams } from "react-router-dom";
 const FriendPage = () => {
 const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-const { _id, picturePath } = useSelector((state) => state.user);
-
+const { _id, picturePath, friends } = useSelector((state) => state.user);
+const { friendId } = useParams(); 
   return (
     <Box>
       <Navbar />
@@ -27,7 +27,7 @@ const { _id, picturePath } = useSelector((state) => state.user);
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <PostsWidget userId={_id} />
+          <FriendPostWidget userId={friendId} friendId={friendId} />
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">

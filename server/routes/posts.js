@@ -6,6 +6,7 @@ import {
   addComment,
   getComments,
   deleteComment,
+  getFriendPosts
 } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
@@ -13,8 +14,8 @@ const router = express.Router();
 
 /* READ */
 router.get("/", verifyToken, getFeedPosts);
+router.get("/friend-posts/:userId/posts", verifyToken, getFriendPosts);
 router.get("/:userId/posts", verifyToken, getUserPosts);
-
 /* UPDATE */
 router.patch("/:id/like", verifyToken, likePost);
 
