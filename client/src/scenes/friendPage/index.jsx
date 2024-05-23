@@ -7,9 +7,9 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import FriendListWidget from "scenes/widgets/FriendListWidget";
 import { useParams } from "react-router-dom";
 const FriendPage = () => {
-const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-const { _id, picturePath, friends } = useSelector((state) => state.user);
-const { friendId } = useParams(); 
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const { _id, picturePath, friends } = useSelector((state) => state.user);
+  const { friendId } = useParams();
   return (
     <Box>
       <Navbar />
@@ -27,7 +27,7 @@ const { friendId } = useParams();
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <FriendPostWidget userId={friendId} friendId={friendId} />
+          <FriendPostWidget userId={_id} friendId={friendId} />
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
