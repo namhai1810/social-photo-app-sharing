@@ -23,10 +23,13 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://k32f39-3001.csb.app/users/${userId}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.json();
     setUser(data);
   };
@@ -128,18 +131,22 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-          <Link to={user.twitter_link} target="_blank" style={{ textDecoration: "none" }}>
-            <FlexBetween gap="1rem" mb="0.5rem">
+            <Link
+              to={user.twitter_link}
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
+              <FlexBetween gap="1rem" mb="0.5rem">
                 <FlexBetween gap="1rem">
-                <img src="../assets/twitter.png" alt="twitter" />
-                <Box>
+                  <img src="../assets/twitter.png" alt="twitter" />
+                  <Box>
                     <Typography color={main} fontWeight="500">
-                    Twitter
+                      Twitter
                     </Typography>
                     <Typography color={medium}>Social Network</Typography>
-                </Box>
+                  </Box>
                 </FlexBetween>
-            </FlexBetween>
+              </FlexBetween>
             </Link>
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
@@ -147,21 +154,25 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-          <Link to={user.linkedIn} target="_blank" style={{ textDecoration: "none" }}>
-            <FlexBetween gap="1rem">
+            <Link
+              to={user.linkedIn}
+              target="_blank"
+              style={{ textDecoration: "none" }}
+            >
+              <FlexBetween gap="1rem">
                 <FlexBetween gap="1rem">
-                <img src="../assets/linkedin.png" alt="linkedin" />
-                <Box>
+                  <img src="../assets/linkedin.png" alt="linkedin" />
+                  <Box>
                     <Typography color={main} fontWeight="500">
-                    Linkedin
+                      Linkedin
                     </Typography>
                     <Typography color={medium}>{user.linkedIn}</Typography>
-                </Box>
+                  </Box>
                 </FlexBetween>
-            </FlexBetween>
+              </FlexBetween>
             </Link>
           </FlexBetween>
-            <EditOutlined sx={{ color: main }} />
+          <EditOutlined sx={{ color: main }} />
         </FlexBetween>
       </Box>
     </WidgetWrapper>

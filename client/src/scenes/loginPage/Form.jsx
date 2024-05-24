@@ -68,7 +68,7 @@ const Form = () => {
 
     try {
       const savedUserResponse = await fetch(
-        "http://localhost:3001/auth/register",
+        "https://k32f39-3001.csb.app/auth/register",
         {
           method: "POST",
           body: formData,
@@ -94,11 +94,14 @@ const Form = () => {
   const login = async (values, onSubmitProps) => {
     setErrorMessage(""); // Clear previous error messages
     try {
-      const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const loggedInResponse = await fetch(
+        "https://k32f39-3001.csb.app/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        }
+      );
 
       if (!loggedInResponse.ok) {
         const errorText = await loggedInResponse.text();

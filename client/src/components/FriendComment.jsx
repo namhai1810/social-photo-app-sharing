@@ -19,10 +19,9 @@ const FriendComment = ({ friendId, name, subtitle, userPicturePath }) => {
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${_id}/${friendId}`,
+      `https://k32f39-3001.csb.app/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

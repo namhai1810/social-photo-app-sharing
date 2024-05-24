@@ -1,4 +1,11 @@
-import { Box, Button, TextField, useMediaQuery, Snackbar, Alert } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  useMediaQuery,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -9,17 +16,24 @@ import MyPostWidget from "scenes/widgets/MyPostWidget";
 
 const EditProfilePage = () => {
   const [user, setUser] = useState(null);
-  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navigate = useNavigate();
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://k32f39-3001.csb.app/users/${userId}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.json();
     setUser(data);
   };
@@ -35,20 +49,31 @@ const EditProfilePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:3001/users/edit/${userId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(user),
-    });
+    const response = await fetch(
+      `https://k32f39-3001.csb.app/users/edit/${userId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(user),
+      }
+    );
 
     if (response.ok) {
-      setSnackbar({ open: true, message: "Profile updated successfully", severity: "success" });
+      setSnackbar({
+        open: true,
+        message: "Profile updated successfully",
+        severity: "success",
+      });
       navigate(`/profile/${userId}`);
     } else {
-      setSnackbar({ open: true, message: "Failed to update profile", severity: "error" });
+      setSnackbar({
+        open: true,
+        message: "Failed to update profile",
+        severity: "error",
+      });
     }
   };
 
@@ -75,7 +100,6 @@ const EditProfilePage = () => {
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-        
           <form onSubmit={handleSubmit}>
             <TextField
               label="First Name"
@@ -156,7 +180,11 @@ const EditProfilePage = () => {
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
       >
-        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
           {snackbar.message}
         </Alert>
       </Snackbar>
