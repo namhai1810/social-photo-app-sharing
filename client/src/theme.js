@@ -1,161 +1,172 @@
 // color design tokens export
 export const colorTokens = {
-    grey: {
-      0: "#FFFFFF",
-      10: "#F8F9FA",
-      50: "#F1F3F5",
-      100: "#E9ECEF",
-      200: "#DEE2E6",
-      300: "#CED4DA",
-      400: "#ADB5BD",
-      500: "#6C757D",
-      600: "#495057",
-      700: "#343A40",
-      800: "#212529",
-      900: "#121416",
-      1000: "#000000",
-    },
-    primary: {
-      50: "#E8F8F5",
-      100: "#C2ECE7",
-      200: "#9BDED9",
-      300: "#73D1CC",
-      400: "#4BC3BE",
-      500: "#23B5B0",
-      600: "#1A8D8A",
-      700: "#126564",
-      800: "#093D3D",
-      900: "#051F1F",
-    },
-    secondary: {
-      50: "#FFF3E1",
-      100: "#FFE0B2",
-      200: "#FFCC80",
-      300: "#FFB74D",
-      400: "#FFA726",
-      500: "#FF9800",
-      600: "#FB8C00",
-      700: "#F57C00",
-      800: "#EF6C00",
-      900: "#E65100",
-    },
-  };
-  // mui theme settings
+  grey: {
+    0: "#FAFAFA",
+    10: "#F0F0F0",
+    50: "#E0E0E0",
+    100: "#D1D1D1",
+    200: "#BEBEBE",
+    300: "#ABABAB",
+    400: "#969696",
+    500: "#838383",
+    600: "#707070",
+    700: "#5D5D5D",
+    800: "#4A4A4A",
+    900: "#373737",
+    1000: "#242424",
+  },
+  primary: {
+    50: "#E0F7FA",
+    100: "#B2EBF2",
+    200: "#80DEEA",
+    300: "#4DD0E1",
+    400: "#26C6DA",
+    500: "#00BFC5",
+    600: "#00A3A9",
+    700: "#008A8F",
+    800: "#007176",
+    900: "#00565C",
+  },
+  secondary: {
+    50: "#FFF8E1",
+    100: "#FFECB3",
+    200: "#FFE082",
+    300: "#FFD54F",
+    400: "#FFCA28",
+    500: "#FFC107",
+    600: "#FFB300",
+    700: "#FFA000",
+    800: "#FF8F00",
+    900: "#FF6F00",
+  },
+};
+// mui theme settings
 export const themeSettings = (mode) => {
-    return {
-      palette: {
-        mode: mode,
-        ...(mode === "dark"
-          ? {
-              // palette values for dark mode
-              primary: {
-                dark: colorTokens.primary[200],
-                main: colorTokens.primary[500],
-                light: colorTokens.primary[700],
-              },
-              secondary: {
-                dark: colorTokens.secondary[200],
-                main: colorTokens.secondary[500],
-                light: colorTokens.secondary[700],
-              },
-              neutral: {
-                dark: colorTokens.grey[100],
-                main: colorTokens.grey[300],
-                mediumMain: colorTokens.grey[400],
-                medium: colorTokens.grey[500],
-                light: colorTokens.grey[700],
-              },
-              background: {
-                default: colorTokens.grey[900],
-                alt: colorTokens.grey[800],
-              },
-            }
-          : {
-              // palette values for light mode
-              primary: {
-                dark: colorTokens.primary[700],
-                main: colorTokens.primary[500],
-                light: colorTokens.primary[50],
-              },
-              secondary: {
-                dark: colorTokens.secondary[700],
-                main: colorTokens.secondary[500],
-                light: colorTokens.secondary[50],
-              },
-              neutral: {
-                dark: colorTokens.grey[700],
-                main: colorTokens.grey[500],
-                mediumMain: colorTokens.grey[400],
-                medium: colorTokens.grey[300],
-                light: colorTokens.grey[50],
-              },
-              background: {
-                default: colorTokens.grey[10],
-                alt: colorTokens.grey[0],
-              },
-            }),
+  return {
+    palette: {
+      mode: mode,
+      ...(mode === "dark"
+        ? {
+            // palette values for dark mode
+            primary: {
+              dark: colorTokens.primary[300],
+              main: colorTokens.primary[600],
+              light: colorTokens.primary[800],
+            },
+            secondary: {
+              dark: colorTokens.secondary[300],
+              main: colorTokens.secondary[600],
+              light: colorTokens.secondary[800],
+            },
+            neutral: {
+              dark: colorTokens.grey[100],
+              main: colorTokens.grey[400],
+              mediumMain: colorTokens.grey[500],
+              medium: colorTokens.grey[600],
+              light: colorTokens.grey[800],
+            },
+            background: {
+              default: colorTokens.grey[1000],
+              alt: colorTokens.grey[900],
+            },
+          }
+        : {
+            // palette values for light mode
+            primary: {
+              dark: colorTokens.primary[800],
+              main: colorTokens.primary[600],
+              light: colorTokens.primary[100],
+            },
+            secondary: {
+              dark: colorTokens.secondary[800],
+              main: colorTokens.secondary[600],
+              light: colorTokens.secondary[100],
+            },
+            neutral: {
+              dark: colorTokens.grey[800],
+              main: colorTokens.grey[600],
+              mediumMain: colorTokens.grey[500],
+              medium: colorTokens.grey[400],
+              light: colorTokens.grey[100],
+            },
+            background: {
+              default: colorTokens.grey[50],
+              alt: colorTokens.grey[0],
+            },
+          }),
+    },
+    typography: {
+      fontFamily: ["Roboto", "sans-serif"].join(","),
+      fontSize: 16,
+      h1: {
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 48,
+        fontWeight: 700,
+        lineHeight: 1.2,
       },
-      typography: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 14,
-        h1: {   
-          fontFamily: ["Rubik", "sans-serif"].join(","),
-          fontSize: 42,
-          fontWeight: 700,
-          lineHeight: 1.2,
-        },
-        h2:{
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 36,
+      h2: {
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 40,
         fontWeight: 600,
         lineHeight: 1.3,
       },
       h3: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 28,
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 32,
         fontWeight: 500,
         lineHeight: 1.4,
       },
       h4: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 24,
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 28,
         fontWeight: 500,
         lineHeight: 1.5,
       },
       h5: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 20,
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 24,
         fontWeight: 400,
         lineHeight: 1.6,
       },
       h6: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
-        fontSize: 18,
+        fontFamily: ["Roboto", "sans-serif"].join(","),
+        fontSize: 20,
         fontWeight: 400,
         lineHeight: 1.7,
       },
       body1: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
+        fontFamily: ["Roboto", "sans-serif"].join(","),
         fontSize: 16,
         fontWeight: 400,
         lineHeight: 1.8,
       },
       body2: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
+        fontFamily: ["Roboto", "sans-serif"].join(","),
         fontSize: 14,
         fontWeight: 400,
         lineHeight: 1.7,
       },
       button: {
-        fontFamily: ["Rubik", "sans-serif"].join(","),
+        fontFamily: ["Roboto", "sans-serif"].join(","),
         fontSize: 14,
         fontWeight: 500,
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
       },
     },
-    shadows: mode === 'dark'
-      ? ["none", "0px 1px 3px rgba(0, 0, 0, 0.12)", "0px 1px 5px rgba(0, 0, 0, 0.2)", "0px 1px 10px rgba(0, 0, 0, 0.3)"]
-      : ["none", "0px 1px 3px rgba(0, 0, 0, 0.12)", "0px 1px 5px rgba(0, 0, 0, 0.2)", "0px 1px 10px rgba(0, 0, 0, 0.1)"],
+    shadows:
+      mode === "dark"
+        ? [
+            "none",
+            "0px 2px 4px rgba(0, 0, 0, 0.12)",
+            "0px 3px 6px rgba(0, 0, 0, 0.20)",
+            "0px 5px 10px rgba(0, 0, 0, 0.30)",
+          ]
+        : [
+            "none",
+            "0px 2px 4px rgba(0, 0, 0, 0.12)",
+            "0px 3px 6px rgba(0, 0, 0, 0.20)",
+            "0px 5px 10px rgba(0, 0, 0, 0.10)",
+          ],
     shape: {
       borderRadius: 8,
     },

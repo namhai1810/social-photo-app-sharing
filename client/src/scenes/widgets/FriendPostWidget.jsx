@@ -10,7 +10,7 @@ const FriendPostWidget = ({ userId, friendId, isProfile = false }) => {
 
   const getPosts = async () => {
     const response = await fetch(
-      `https://k32f39-3001.csb.app/posts/friend-posts/${friendId}/posts`,
+      `http://localhost:3001/posts/friend-posts/${friendId}/posts`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -22,7 +22,7 @@ const FriendPostWidget = ({ userId, friendId, isProfile = false }) => {
 
   const getUserPosts = async () => {
     const response = await fetch(
-      `https://k32f39-3001.csb.app/posts/${userId}/posts`,
+      `http://localhost:3001/posts/${userId}/posts`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

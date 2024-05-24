@@ -27,13 +27,10 @@ const EditProfilePage = () => {
   const navigate = useNavigate();
 
   const getUser = async () => {
-    const response = await fetch(
-      `https://k32f39-3001.csb.app/users/${userId}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const data = await response.json();
     setUser(data);
   };
@@ -49,17 +46,14 @@ const EditProfilePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `https://k32f39-3001.csb.app/users/edit/${userId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(`http://localhost:3001/users/edit/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(user),
+    });
 
     if (response.ok) {
       setSnackbar({
